@@ -28,3 +28,309 @@ FOREIGN KEY ("category_id")
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(1269040625500373670)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (120.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_development"[0m
+  [1m[35m (117.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_test"[0m
+  [1m[35m (353.7ms)[0m  [1m[35mCREATE DATABASE "kyoto_development" ENCODING = 'unicode'[0m
+  [1m[35m (241.6ms)[0m  [1m[35mCREATE DATABASE "kyoto_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "nom" character varying, "type" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" serial primary key, "titre" character varying, "description" character varying, "image_url" character varying, "prix" float, "disponibilite" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "category_id" integer)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products" USING btree ("category_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170218161139')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170218160520'),
+('20170218160927');
+
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-18 17:17:36 UTC], ["updated_at", 2017-02-18 17:17:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "nom" character varying, "type" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" serial primary key, "titre" character varying, "description" character varying, "image_url" character varying, "prix" float, "disponibilite" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "category_id" integer)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products" USING btree ("category_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170218161139')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170218160520'),
+('20170218160927');
+
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-18 17:17:36 UTC], ["updated_at", 2017-02-18 17:17:36 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (118.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_development"[0m
+  [1m[35m (121.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_test"[0m
+  [1m[35m (242.9ms)[0m  [1m[35mCREATE DATABASE "kyoto_development" ENCODING = 'unicode'[0m
+  [1m[35m (241.2ms)[0m  [1m[35mCREATE DATABASE "kyoto_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "nom" character varying, "type" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" serial primary key, "titre" character varying, "description" character varying, "image_url" character varying, "prix" float, "disponibilite" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "category_id" integer)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products" USING btree ("category_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170218161139')[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170218160520'),
+('20170218160927');
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-18 17:19:21 UTC], ["updated_at", 2017-02-18 17:19:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "nom" character varying, "type" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" serial primary key, "titre" character varying, "description" character varying, "image_url" character varying, "prix" float, "disponibilite" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "category_id" integer)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products" USING btree ("category_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20170218161139')[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES
+('20170218160520'),
+('20170218160927');
+
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-18 17:19:21 UTC], ["updated_at", 2017-02-18 17:19:21 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (121.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_development"[0m
+  [1m[35m (122.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kyoto_test"[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1269040625500373670);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCategories (20170218160520)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" serial primary key, "nom" character varying, "type_name" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170218160520"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20170218160927)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" serial primary key, "titre" character varying, "description" character varying, "image_url" character varying, "prix" float, "disponibilite" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170218160927"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReferenceToProduct (20170218161139)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170218161139"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-02-18 17:20:08 UTC], ["updated_at", 2017-02-18 17:20:08 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1269040625500373670)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("nom", "type_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nom", "menu"], ["type_name", "menu"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.1ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu A"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 10.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu B"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n7 brochettes grillées : 2 saumons, boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu C"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 16.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu D"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu E"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 17.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu F"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 18.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu G"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 18.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu H"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu I"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 24.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu K"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 15.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu K1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 15.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu K2"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 15.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu L"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu L1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu M"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 15.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu M1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 18.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu M2"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 18.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu N1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu N2"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu N3"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu N4"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu R"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 16.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu R1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu R2"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu R3"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 16.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu O"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu P"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu S1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 15.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu S2"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 22.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu T"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu T1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 19.5], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu U"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 22.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu Y"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 48.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu Y1"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 50.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu Z"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 55.0], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Menu Enfant"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 6.9], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Ramen Burger"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 16.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Chahan"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Tatati de saumon"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 18.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Tempura crevette"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Tempura poulet"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Tempura légume"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 13.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Salade de St-Jacques"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("titre", "description", "image_url", "prix", "disponibilite", "created_at", "updated_at", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["titre", "Salade saumon"], ["description", "BROCHETTE\n1 soupe, 1 salade, 1 riz\n5 brochettes grillées : boeuf au fromage, canard, cuisse de poulet, boulette de poulet, aileron de poulet"], ["image_url", ""], ["prix", 14.8], ["disponibilite", "journee"], ["created_at", 2017-02-18 17:20:16 UTC], ["updated_at", 2017-02-18 17:20:16 UTC], ["category_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = $1[0m  [["category_id", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."type_name" = $1[0m  [["type_name", "menu"]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."type_name" = $1[0m  [["type_name", "menu"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."type_name" = $1[0m  [["type_name", "menu"]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."type_name" = $1 ORDER BY "categories"."id" ASC LIMIT $2[0m  [["type_name", "menu"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."type_name" = $1 ORDER BY "categories"."id" ASC LIMIT $2[0m  [["type_name", "menu"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = $1[0m  [["category_id", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."type_name" = $1[0m  [["type_name", "unique"]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."type_name" = $1[0m  [["type_name", "unique"]]
